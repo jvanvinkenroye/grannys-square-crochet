@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCard from '../components/HeroCard.astro';
+import CTAButton from '../components/CTAButton.astro';
+---
+
+<BaseLayout
+  title="404 - Seite nicht gefunden | Granny Square Crochet"
+  description="Die angeforderte Seite wurde nicht gefunden. Entdecke unsere Tutorials, Galerie oder Haeckelschrift."
+>
+  <section class="container" style="padding: 4rem 0;">
+    <HeroCard>
+      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">
+        404 - Seite nicht gefunden
+      </h1>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+        Die angeforderte Seite existiert nicht oder wurde verschoben. Keine
+        Sorge, hier findest du schnell wieder zurueck zu unseren Inhalten.
+      </p>
+
+      <div
+        style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;"
+      >
+        <CTAButton href="/" text="Zur Startseite" />
+        <CTAButton href="/tutorials/" text="Tutorials entdecken" />
+        <CTAButton href="/gallery/" text="Galerie ansehen" secondary={true} />
+      </div>
+
+      <div
+        style="background: var(--accent-soft); padding: 1.5rem; border-radius: 12px;"
+      >
+        <h3 style="margin-bottom: 0.5rem;">Beliebte Seiten:</h3>
+        <ul style="margin: 0; padding-left: 1.2rem;">
+          <li style="margin-bottom: 0.5rem;">
+            <a
+              href="/tutorials/"
+              style="color: var(--accent); font-weight: 500;">Tutorials</a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <a href="/gallery/" style="color: var(--accent); font-weight: 500;"
+              >Galerie</a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <a
+              href="/haekelschrift/"
+              style="color: var(--accent); font-weight: 500;">Haeckelschrift</a>
+          </li>
+          <li style="margin-bottom: 0.5rem;">
+            <a href="/about/" style="color: var(--accent); font-weight: 500;"
+              >Ueber uns</a>
+          </li>
+        </ul>
+      </div>
+    </HeroCard>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-family: 'Fraunces', 'Georgia', serif;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

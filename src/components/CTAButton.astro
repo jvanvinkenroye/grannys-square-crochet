@@ -1,0 +1,37 @@
+---
+// CTAButton.astro - Wiederverwendbare CTA-Button-Komponente
+// Props:
+// - href: String (required)
+// - text: String (required)
+// - secondary: Boolean (optional)
+
+interface Props {
+  href: string;
+  text: string;
+  secondary?: boolean;
+}
+
+const { href, text, secondary = false } = Astro.props;
+---
+
+<a class="cta {secondary ? 'secondary' : ''}" href={href}>
+  {text}
+</a>
+
+<style>
+  .cta {
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .cta.secondary {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+  }
+</style>

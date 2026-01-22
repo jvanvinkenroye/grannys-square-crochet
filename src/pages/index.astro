@@ -1,23 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import HeroCard from '../components/HeroCard.astro';
+import Pill from '../components/Pill.astro';
+import CTAButton from '../components/CTAButton.astro';
+import { getCollection } from 'astro:content';
 
-const highlights = [
-  {
-    title: "Schnellstarter: Classic Bloom",
-    level: "Anfaenger",
-    time: "25 Minuten",
-  },
-  {
-    title: "Vintage Popcorn Squares",
-    level: "Mittel",
-    time: "60 Minuten",
-  },
-  {
-    title: "Textur-Mix fuer Decken",
-    level: "Fortgeschritten",
-    time: "90 Minuten",
-  },
-];
+const highlights = await getCollection('highlights');
 ---
 
 <BaseLayout
@@ -25,34 +14,36 @@ const highlights = [
   description="Moderne Haeckel-Tutorials, inspirierende Galerie und klare Haeckelschrift."
 >
   <section class="container hero">
-    <div class="hero-card">
-      <span class="pill">Granny Square Studio</span>
+    <HeroCard>
+      <Pill text="Granny Square Studio" />
       <h1>Moderne Granny Squares mit Stil, Struktur und Herz.</h1>
       <p>
         Entdecke klare Schritt-fuer-Schritt-Anleitungen, kuratierte Farbkombis
         und eine Galerie, die Lust aufs Naechste Projekt macht.
       </p>
       <div class="cta-row">
-        <a class="cta" href="/tutorials/">Zu den Tutorials</a>
-        <a class="cta secondary" href="/gallery/">Galerie ansehen</a>
+        <CTAButton href="/tutorials/" text="Zu den Tutorials" />
+        <CTAButton href="/gallery/" text="Galerie ansehen" secondary={true} />
       </div>
-    </div>
-    <div class="hero-card" style="background: rgba(255, 255, 255, 0.9);">
+    </HeroCard>
+    <HeroCard style="background: rgba(255, 255, 255, 0.9);">
       <h2>Heute im Fokus</h2>
       <p>
         Kleine Haeckelpausen mit grossem Effekt: Kombinationen aus zwei Farben,
         drei Reihen und einem Twist im Abschluss.
       </p>
       <div class="cards" style="margin-top: 1.2rem;">
-        {highlights.map((item) => (
-          <article class="card">
-            <span class="tag">{item.level}</span>
-            <h3>{item.title}</h3>
-            <p style="color: var(--muted); margin: 0;">{item.time}</p>
-          </article>
-        ))}
+        {
+          highlights.map((item) => (
+            <Card
+              title={item.data.title}
+              tag={item.data.level}
+              content={item.data.time}
+            />
+          ))
+        }
       </div>
-    </div>
+    </HeroCard>
   </section>
 
   <section class="container">
@@ -65,24 +56,18 @@ const highlights = [
       </div>
     </div>
     <div class="cards">
-      <article class="card">
-        <h3>Tutorials mit Struktur</h3>
-        <p style="color: var(--muted);">
-          Schrittbilder, Materiallisten und Zeitplanung fuer jede Technik.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Galerie & Farbideen</h3>
-        <p style="color: var(--muted);">
-          Sammle Inspiration und filtere nach Mood, Saison oder Motiv.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Haeckelschrift klar erklaert</h3>
-        <p style="color: var(--muted);">
-          Ein Glossar mit Symbolen, Druckansicht und Download-Optionen.
-        </p>
-      </article>
+      <Card
+        title="Tutorials mit Struktur"
+        content="Schrittbilder, Materiallisten und Zeitplanung fuer jede Technik."
+      />
+      <Card
+        title="Galerie & Farbideen"
+        content="Sammle Inspiration und filtere nach Mood, Saison oder Motiv."
+      />
+      <Card
+        title="Haeckelschrift klar erklaert"
+        content="Ein Glossar mit Symbolen, Druckansicht und Download-Optionen."
+      />
     </div>
   </section>
 </BaseLayout>

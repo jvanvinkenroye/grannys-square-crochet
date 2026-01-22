@@ -1,0 +1,29 @@
+---
+// Pill.astro - Wiederverwendbare Pill-Komponente
+// Props:
+// - text: String (required)
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<span class="pill">{text}</span>
+
+<style>
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>

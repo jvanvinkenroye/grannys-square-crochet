@@ -1,0 +1,11 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f0e8;
+  --bg-alt: #efe3d4;
+  --ink: #2e1f1a;
+  --muted: #6f5d54;
+  --accent: #d05f2f;
+  --accent-soft: #f3b597;
+  --card: #fffaf3;
+  --shadow: 0 18px 40px rgba(46, 31, 26, 0.12);
+}

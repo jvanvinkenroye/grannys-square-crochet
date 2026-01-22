@@ -1,14 +1,11 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import HeroCard from '../../components/HeroCard.astro';
+import Pill from '../../components/Pill.astro';
+import { getCollection } from 'astro:content';
 
-const glossary = [
-  { term: "Lm", meaning: "Luftmasche" },
-  { term: "fM", meaning: "feste Masche" },
-  { term: "hStb", meaning: "halbes Staebchen" },
-  { term: "Stb", meaning: "Staebchen" },
-  { term: "DStb", meaning: "Doppelstaebchen" },
-  { term: "KM", meaning: "Kettmasche" },
-];
+const glossary = await getCollection('glossary');
 ---
 
 <BaseLayout title="Haeckelschrift | Granny Square Crochet">
@@ -20,23 +17,22 @@ const glossary = [
           Symbole, Abkuerzungen und eine klare Druckansicht.
         </p>
       </div>
-      <span class="pill">Glossar</span>
+      <Pill text="Glossar" />
     </div>
 
-    <div class="hero-card">
+    <HeroCard>
       <h2>Kurze Legende</h2>
       <p>
         Diese Uebersicht verbindet die wichtigsten Symbole mit klaren Begriffen.
         Drucke dir die Liste fuer dein Projektbuch aus.
       </p>
       <div class="cards" style="margin-top: 1.5rem;">
-        {glossary.map((entry) => (
-          <article class="card">
-            <h3>{entry.term}</h3>
-            <p style="color: var(--muted); margin: 0;">{entry.meaning}</p>
-          </article>
-        ))}
+        {
+          glossary.map((entry) => (
+            <Card title={entry.data.term} content={entry.data.meaning} />
+          ))
+        }
       </div>
-    </div>
+    </HeroCard>
   </section>
 </BaseLayout>
