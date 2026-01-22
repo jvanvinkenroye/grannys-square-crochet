@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const tutorials = [
+  {
+    title: "Classic Bloom Square",
+    level: "Anfaenger",
+    time: "25 Minuten",
+    focus: "Grundrunden + Farbwechsel",
+  },
+  {
+    title: "Popcorn Texture Square",
+    level: "Mittel",
+    time: "60 Minuten",
+    focus: "Strukturierter Stich",
+  },
+  {
+    title: "Botanical Frame Square",
+    level: "Mittel",
+    time: "50 Minuten",
+    focus: "Rahmen + Kontrast",
+  },
+  {
+    title: "Modern Patchwork Set",
+    level: "Fortgeschritten",
+    time: "90 Minuten",
+    focus: "Serienarbeit + Blockaufbau",
+  },
+];
+---
+
+<BaseLayout title="Tutorials | Granny Square Crochet">
+  <section class="container">
+    <div class="section-title">
+      <div>
+        <h1>Tutorials</h1>
+        <p style="color: var(--muted); margin: 0;">
+          Vom ersten Kreis bis zur texturierten Patchwork-Decke.
+        </p>
+      </div>
+      <span class="pill">4 neue Anleitungen</span>
+    </div>
+
+    <div class="cards">
+      {tutorials.map((tutorial) => (
+        <article class="card">
+          <span class="tag">{tutorial.level}</span>
+          <h3>{tutorial.title}</h3>
+          <p style="color: var(--muted); margin: 0.4rem 0 0.8rem;">
+            {tutorial.focus}
+          </p>
+          <p style="color: var(--muted); margin: 0;">{tutorial.time}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="hero-card">
+      <h2>Dein Projektplan</h2>
+      <p>
+        Materiallisten, Garnempfehlungen und ein klarer Zeitplan sorgen dafuer,
+        dass jedes Square passt. Ergaenze deine Favoriten zu einer eigenen
+        Sammlung.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

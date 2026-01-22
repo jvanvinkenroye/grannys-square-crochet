@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const gallery = [
+  { title: "Citrus Bloom", mood: "Sonnig", colors: "Apricot / Cream" },
+  { title: "Ocean Tile", mood: "Cool", colors: "Navy / Mint" },
+  { title: "Autumn Quilt", mood: "Warm", colors: "Rost / Sand" },
+  { title: "Pastel Ring", mood: "Soft", colors: "Lavendel / Peach" },
+  { title: "Nordic Frame", mood: "Minimal", colors: "Schwarz / Ecru" },
+  { title: "Garden Patch", mood: "Botanisch", colors: "Moos / Rose" },
+];
+---
+
+<BaseLayout title="Galerie | Granny Square Crochet">
+  <section class="container">
+    <div class="section-title">
+      <div>
+        <h1>Galerie</h1>
+        <p style="color: var(--muted); margin: 0;">
+          Farbgeschichten, Musterideen und fertige Kombinationen.
+        </p>
+      </div>
+      <span class="pill">Filter: Mood, Farben, Motiv</span>
+    </div>
+
+    <div class="cards">
+      {gallery.map((item) => (
+        <article class="card">
+          <div
+            style="
+              height: 140px;
+              border-radius: 18px;
+              background: linear-gradient(135deg, #f3b597, #efe3d4);
+              margin-bottom: 1rem;
+            "
+          ></div>
+          <span class="tag">{item.mood}</span>
+          <h3>{item.title}</h3>
+          <p style="color: var(--muted); margin: 0;">{item.colors}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

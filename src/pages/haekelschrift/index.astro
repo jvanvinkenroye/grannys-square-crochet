@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const glossary = [
+  { term: "Lm", meaning: "Luftmasche" },
+  { term: "fM", meaning: "feste Masche" },
+  { term: "hStb", meaning: "halbes Staebchen" },
+  { term: "Stb", meaning: "Staebchen" },
+  { term: "DStb", meaning: "Doppelstaebchen" },
+  { term: "KM", meaning: "Kettmasche" },
+];
+---
+
+<BaseLayout title="Haeckelschrift | Granny Square Crochet">
+  <section class="container">
+    <div class="section-title">
+      <div>
+        <h1>Haeckelschrift</h1>
+        <p style="color: var(--muted); margin: 0;">
+          Symbole, Abkuerzungen und eine klare Druckansicht.
+        </p>
+      </div>
+      <span class="pill">Glossar</span>
+    </div>
+
+    <div class="hero-card">
+      <h2>Kurze Legende</h2>
+      <p>
+        Diese Uebersicht verbindet die wichtigsten Symbole mit klaren Begriffen.
+        Drucke dir die Liste fuer dein Projektbuch aus.
+      </p>
+      <div class="cards" style="margin-top: 1.5rem;">
+        {glossary.map((entry) => (
+          <article class="card">
+            <h3>{entry.term}</h3>
+            <p style="color: var(--muted); margin: 0;">{entry.meaning}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
