@@ -4,6 +4,8 @@ import Card from '../../components/Card.astro';
 import Pill from '../../components/Pill.astro';
 import { getCollection } from 'astro:content';
 
+import { Image } from 'astro:assets';
+
 const gallery = await getCollection('gallery');
 ---
 
@@ -29,12 +31,19 @@ const gallery = await getCollection('gallery');
           >
             <div
               style="
-              height: 140px;
-              border-radius: 18px;
-              background: linear-gradient(135deg, #f3b597, #efe3d4);
               margin-bottom: 1rem;
+              border-radius: 18px;
+              overflow: hidden;
             "
-            />
+            >
+              <Image
+                src={item.data.image}
+                alt={item.data.title}
+                width={400}
+                height={300}
+                style="width: 100%; height: auto; display: block;"
+              />
+            </div>
           </Card>
         ))
       }

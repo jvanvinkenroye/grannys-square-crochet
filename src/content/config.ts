@@ -11,20 +11,22 @@ const highlights = defineCollection({
 
 const gallery = defineCollection({
   type: 'data',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     mood: z.string(),
     colors: z.string(),
+    image: image(),
   }),
 });
 
 const tutorials = defineCollection({
-  type: 'data',
-  schema: z.object({
+  type: 'content',
+  schema: ({ image }) => z.object({
     title: z.string(),
     level: z.string(),
     time: z.string(),
     focus: z.string(),
+    image: image().optional(),
   }),
 });
 
