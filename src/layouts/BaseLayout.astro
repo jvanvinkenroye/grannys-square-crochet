@@ -63,10 +63,10 @@ const {
           <span>Granny Square Crochet</span>
         </a>
         <nav>
-          <a href="/tutorials/">Tutorials</a>
-          <a href="/gallery/">Galerie</a>
-          <a href="/haekelschrift/">Haeckelschrift</a>
-          <a href="/about/">Ueber</a>
+          <a href="/tutorials/" class={Astro.url.pathname.startsWith('/tutorials') ? 'active' : ''}>Tutorials</a>
+          <a href="/gallery/" class={Astro.url.pathname.startsWith('/gallery') ? 'active' : ''}>Galerie</a>
+          <a href="/haekelschrift/" class={Astro.url.pathname.startsWith('/haekelschrift') ? 'active' : ''}>Haeckelschrift</a>
+          <a href="/about/" class={Astro.url.pathname.startsWith('/about') ? 'active' : ''}>Ueber</a>
         </nav>
       </div>
     </header>
