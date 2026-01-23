@@ -8,6 +8,9 @@ import '@fontsource/fraunces/700.css';
 import '@fontsource/space-grotesk/400.css';
 import '@fontsource/space-grotesk/500.css';
 import '@fontsource/space-grotesk/600.css';
+import { Image } from "astro:assets";
+import catImage from "../assets/cat-gimmick.png";
+import duckImage from "../assets/duck-gimmick.png";
 
 const {
   title = 'Granny Square Crochet',
@@ -74,10 +77,54 @@ const {
       <slot />
     </main>
     <footer>
-      <div class="container">
+      <div class="gimmick-container">
+          <Image src={duckImage} alt="Häkel-Ente" class="gimmick duck" width={100} />
+          <Image src={catImage} alt="Häkel-Katze" class="gimmick cat" width={110} />
+      </div>
+      <div class="container relative-z">
         Mit Liebe gehäkelt. Moderne Granny Squares, klare Anleitungen und ein
         kleines Archiv an Mustern.
       </div>
     </footer>
   </body>
 </html>
+
+<style is:global>
+  footer {
+    position: relative;
+    padding-top: 4rem;
+    overflow: hidden;
+  }
+  
+  .gimmick-container {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 0;
+  }
+
+  .gimmick {
+    position: absolute;
+    bottom: -10px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+  }
+
+  .gimmick.cat {
+    right: 5%;
+    transform: rotate(-5deg);
+  }
+  
+  .gimmick.duck {
+    left: 5%;
+    transform: rotate(5deg);
+  }
+
+  .relative-z {
+    position: relative;
+    z-index: 1;
+  }
+</style>
